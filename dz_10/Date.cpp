@@ -154,97 +154,221 @@ void Date::print()
 	cout << "Year: " << year << endl;
 }
 
-Date Date::operator++ ()
+//Date Date::operator++ ()
+//{
+//	Date date(*this);
+//	date.increase(1);
+//	return date;
+//}
+//
+//Date Date::operator-- ()
+//{
+//	Date date(*this);
+//	date.decrease(1);
+//	return date;
+//}
+//
+//Date Date::operator+ (int d)
+//{
+//	Date date(*this);
+//	date.increase(d);
+//	return date;
+//}
+//
+//Date Date::operator- (int d)
+//{
+//	Date date(*this);
+//	date.decrease(d);
+//	return date;
+//}
+//
+//Date Date::operator+= (int d)
+//{
+//	this->increase(d);
+//	return *this;
+//}
+//
+//Date Date::operator-= (int d)
+//{
+//	this->decrease(d);
+//	return *this;
+//}
+//
+//bool Date::operator> (const Date& date)
+//{
+//	if (year > date.get(D_YEAR)) return true;
+//	else if (month > date.get(D_MONTH)) return true;
+//	else if (day > date.get(D_DAY)) return true;
+//	else return false;
+//}
+//
+//bool Date::operator< (const Date& date)
+//{
+//	if (year < date.get(D_YEAR)) return true;
+//	else if (month < date.get(D_MONTH)) return true;
+//	else if (day < date.get(D_DAY)) return true;
+//	else return false;
+//}
+//
+//bool Date::operator>= (const Date& date)
+//{
+//	if (year >= date.get(D_YEAR) &&
+//		month >= date.get(D_MONTH) &&
+//		day >= date.get(D_DAY))
+//		return true;
+//
+//	else return false;
+//}
+//
+//bool Date::operator<= (const Date& date)
+//{
+//	if (year <= date.get(D_YEAR) &&
+//		month <= date.get(D_MONTH) &&
+//		day <= date.get(D_DAY))
+//		return true;
+//
+//	else return false;
+//}
+//
+//bool Date::operator== (const Date& date)
+//{
+//	if (year == date.get(D_YEAR) &&
+//		month == date.get(D_MONTH) &&
+//		day == date.get(D_DAY)) 
+//		return true;
+//
+//	else return false;
+//}
+//
+//bool Date::operator!= (const Date& date)
+//{
+//	if (year != date.get(D_YEAR) ||
+//		month != date.get(D_MONTH) ||
+//		day != date.get(D_DAY))
+//		return true;
+//
+//	else return false;
+//}
+
+//Äç ¹11
+
+Date operator++ (const Date& _date)
 {
-	Date date(*this);
+	Date date(_date);
 	date.increase(1);
 	return date;
 }
 
-Date Date::operator-- ()
+Date operator-- (const Date& _date)
 {
-	Date date(*this);
+	Date date(_date);
 	date.decrease(1);
 	return date;
 }
 
-Date Date::operator+ (int d)
+Date operator+ (const Date& _date, int d)
 {
-	Date date(*this);
+	Date date(_date);
 	date.increase(d);
 	return date;
 }
 
-Date Date::operator- (int d)
+Date operator- (const Date& _date, int d)
 {
-	Date date(*this);
+	Date date(_date);
 	date.decrease(d);
 	return date;
 }
 
-Date Date::operator+= (int d)
+Date operator+ (int d, const Date& _date)
 {
-	this->increase(d);
-	return *this;
+	Date date(_date);
+	date.increase(d);
+	return date;
 }
 
-Date Date::operator-= (int d)
+Date operator- (int d, const Date& _date)
 {
-	this->decrease(d);
-	return *this;
+	Date date(_date);
+	date.decrease(d);
+	return date;
 }
 
-bool Date::operator> (const Date& date)
+Date operator+= (Date& _date, int d)
 {
-	if (year > date.get(D_YEAR)) return true;
-	else if (month > date.get(D_MONTH)) return true;
-	else if (day > date.get(D_DAY)) return true;
+	_date.increase(d);
+	return _date;
+}
+
+Date operator-= (Date& _date, int d)
+{
+	_date.decrease(d);
+	return _date;
+}
+
+Date operator+= (int d, Date& _date)
+{
+	_date.increase(d);
+	return _date;
+}
+
+Date operator-= (int d, Date& _date)
+{
+	_date.decrease(d);
+	return _date;
+}
+
+bool operator> (const Date& date_1, const Date& date_2)
+{
+	if (date_1.get(D_YEAR) > date_2.get(D_YEAR)) return true;
+	else if (date_1.get(D_MONTH) > date_2.get(D_MONTH)) return true;
+	else if (date_1.get(D_DAY) > date_2.get(D_DAY)) return true;
 	else return false;
 }
 
-bool Date::operator< (const Date& date)
+bool operator< (const Date& date_1, const Date& date_2)
 {
-	if (year < date.get(D_YEAR)) return true;
-	else if (month < date.get(D_MONTH)) return true;
-	else if (day < date.get(D_DAY)) return true;
+	if (date_1.get(D_YEAR) < date_2.get(D_YEAR)) return true;
+	else if (date_1.get(D_MONTH) < date_2.get(D_MONTH)) return true;
+	else if (date_1.get(D_DAY) < date_2.get(D_DAY)) return true;
 	else return false;
 }
 
-bool Date::operator>= (const Date& date)
+bool operator>= (const Date& date_1, const Date& date_2)
 {
-	if (year >= date.get(D_YEAR) &&
-		month >= date.get(D_MONTH) &&
-		day >= date.get(D_DAY))
+	if (date_1.get(D_YEAR) >= date_2.get(D_YEAR) &&
+		date_1.get(D_MONTH) >= date_2.get(D_MONTH) &&
+		date_1.get(D_DAY) >= date_2.get(D_DAY))
 		return true;
 
 	else return false;
 }
 
-bool Date::operator<= (const Date& date)
+bool operator<= (const Date& date_1, const Date& date_2)
 {
-	if (year <= date.get(D_YEAR) &&
-		month <= date.get(D_MONTH) &&
-		day <= date.get(D_DAY))
+	if (date_1.get(D_YEAR) <= date_2.get(D_YEAR) &&
+		date_1.get(D_MONTH) <= date_2.get(D_MONTH) &&
+		date_1.get(D_DAY) <= date_2.get(D_DAY))
 		return true;
 
 	else return false;
 }
 
-bool Date::operator== (const Date& date)
+bool operator== (const Date& date_1, const Date& date_2)
 {
-	if (year == date.get(D_YEAR) &&
-		month == date.get(D_MONTH) &&
-		day == date.get(D_DAY)) 
+	if (date_1.get(D_YEAR) == date_2.get(D_YEAR) &&
+		date_1.get(D_MONTH) == date_2.get(D_MONTH) &&
+		date_1.get(D_DAY) == date_2.get(D_DAY))
 		return true;
 
 	else return false;
 }
 
-bool Date::operator!= (const Date& date)
+bool operator!= (const Date& date_1, const Date& date_2)
 {
-	if (year != date.get(D_YEAR) ||
-		month != date.get(D_MONTH) ||
-		day != date.get(D_DAY))
+	if (date_1.get(D_YEAR) != date_2.get(D_YEAR) ||
+		date_1.get(D_MONTH) != date_2.get(D_MONTH) ||
+		date_1.get(D_DAY) != date_2.get(D_DAY))
 		return true;
 
 	else return false;

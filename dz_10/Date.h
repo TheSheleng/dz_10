@@ -51,21 +51,42 @@ public:
 
 	void print();
 
-	//Операторы
-	Date operator++ ();
-	Date operator-- ();
+	//Операторы (закоменченно для устранения конфликтов)
+	//Date operator++ ();
+	//Date operator-- ();
 
-	Date operator+ (int d);
-	Date operator- (int d);
+	//Date operator+ (int d);
+	//Date operator- (int d);
 
-	Date operator+= (int d);
-	Date operator-= (int d);
+	//Date operator+= (int d);
+	//Date operator-= (int d);
 
-	bool operator> (const Date& date);
-	bool operator< (const Date& date);
-	bool operator>= (const Date& date);
-	bool operator<= (const Date& date);
-	bool operator== (const Date& date);
-	bool operator!= (const Date& date);
+	//bool operator> (const Date& date);
+	//bool operator< (const Date& date);
+	//bool operator>= (const Date& date);
+	//bool operator<= (const Date& date);
+	//bool operator== (const Date& date);
+	//bool operator!= (const Date& date);
 };
 
+
+//Дз №11
+Date operator++ (const Date& _date);
+Date operator-- (const Date& _date);
+
+Date operator+ (const Date& _date, int d);
+Date operator- (const Date& _date, int d);
+Date operator+ (int d, const Date& _date);
+Date operator- (int d, const Date& _date);
+
+Date operator+= (Date& _date, int d);
+Date operator-= (Date& _date, int d);
+Date operator+= (int d, Date& _date);
+Date operator-= (int d, Date& _date);
+
+bool operator> (const Date& date_1, const Date& date_2);
+bool operator< (const Date& date_1, const Date& date_2);
+bool operator>= (const Date& date_1, const Date& date_2);
+bool operator<= (const Date& date_1, const Date& date_2);
+bool operator== (const Date& date_1, const Date& date_2);
+bool operator!= (const Date& date_1, const Date& date_2);
